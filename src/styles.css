@@ -1,0 +1,112 @@
+/* Basic reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background: linear-gradient(to bottom, #cce7ff, #e6f2ff);
+  padding: 20px;
+}
+
+.card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Flash animation when all buttons clicked */
+.flash {
+  animation: flashCard 0.5s ease;
+}
+
+@keyframes flashCard {
+  0% {
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.7);
+    transform: scale(1.02);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(0, 255, 0, 0.9);
+    transform: scale(1.05);
+  }
+  100% {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transform: scale(1);
+  }
+}
+
+.title {
+  font-size: 2rem;
+  color: #0077cc;
+  margin-bottom: 20px;
+}
+
+.counter {
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.counter label {
+  font-weight: bold;
+  margin-right: 10px;
+  font-size: 1.1rem;
+}
+
+.counter input {
+  width: 60px;
+  padding: 5px;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.button-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+@media (min-width: 480px) {
+  .button-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* Buttons */
+.btn {
+  padding: 12px;
+  border-radius: 15px;
+  border: none;
+  font-size: 1rem;
+  color: white;
+  background-color: #87cefa; /* Light blue */
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+.btn:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+.btn.active {
+  background-color: #28a745; /* Green */
+}
