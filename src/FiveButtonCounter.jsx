@@ -1,11 +1,29 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './styles.css';
 
 export default function FiveButtonCounter() {
   const prayers = ['الفجر', 'الظهر', 'العصر', 'المغرب', 'العشاء'];
-  const [buttons, setButtons] = useState([false, false, false, false, false]);
-  const [counter, setCounter] = useState(10);
+
+  const [counter, setCounter] = useState(() => {
+    const saved = localStorage.getItem('counterValue');
+    return saved ? Number(saved) : 10;
+  });
+
+  const [buttons, setButtons] = useState(() => {
+    const saved = localStorage.getItem('buttonStates');
+    return saved ? JSON.parse(saved) : [false, false, false, false, false];
+  });
+
   const [flash, setFlash] = useState(false);
+
+  // Save to localStorage whenever values change
+  useEffect(() => {
+    localStorage.setItem('counterValue', counter);
+  }, [counter]);
+
+  useEffect(() => {
+    localStorage.setItem('buttonStates', JSON.stringify(buttons));
+  }, [buttons]);
 
   const handleToggle = (index) => {
     const newButtons = [...buttons];
@@ -22,17 +40,31 @@ export default function FiveButtonCounter() {
     }
   };
 
+  const handleChange = (e) => {
+    const value = e.target.value;
+    // Only allow positive integers (no empty, no negative)
+    if (/^\d*$/.test(value)) {
+      const num = value === '' ? 0 : Number(value);
+      setCounter(num);
+      localStorage.setItem('counterValue', num);
+    }
+  };
+
   return (
     <div className="container">
       <div className={`card ${flash ? 'flash' : ''}`}>
         <h1 className="title">عداد الصلوات</h1>
 
         <div className="counter">
-          <label>Counter:</label>
+          <label>العداد:</label>
           <input
-            type="number"
+            type="text"
+            inputMode="numeric"
+            pattern="[0-9]*"
             value={counter}
-            onChange={(e) => setCounter(Number(e.target.value))}
+            onChange={handleChange}
+            className="counter-input"
+            style={{ width: `${String(counter).length + 2}ch` }}
           />
         </div>
 
