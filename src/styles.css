@@ -1,3 +1,49 @@
+/* ✅ Overall layout */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to bottom right, #e0f2ff, #ffffff);
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  direction: rtl;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  background: #ffffff;
+  padding: 30px 40px;
+  border-radius: 20px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  width: 320px;
+  transition: transform 0.3s ease;
+}
+
+.card.flash {
+  animation: flashAnim 0.4s ease;
+}
+
+@keyframes flashAnim {
+  0% { background-color: #d4edda; }
+  100% { background-color: #ffffff; }
+}
+
+.title {
+  margin-bottom: 25px;
+  color: #004b7c;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+/* ✅ Counter section */
 .counter {
   margin-bottom: 25px;
   display: flex;
@@ -30,4 +76,37 @@
   border-color: #28a745;
   box-shadow: 0 0 8px rgba(40, 167, 69, 0.5);
   background: #e8fff0;
+}
+
+/* ✅ Buttons grid */
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 10px;
+  justify-items: center;
+}
+
+/* ✅ Button styles */
+.btn {
+  padding: 12px 0;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  width: 120px;
+  background-color: #cce5ff;
+  color: #004085;
+}
+
+.btn:hover {
+  background-color: #b3d7ff;
+}
+
+.btn.active {
+  background-color: #28a745;
+  color: white;
+  transform: scale(1.03);
 }
