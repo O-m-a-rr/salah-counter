@@ -23,7 +23,8 @@ body {
   border-radius: 20px;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
   text-align: center;
-  width: 320px;
+  width: 90%;
+  max-width: 360px;
   transition: transform 0.3s ease;
 }
 
@@ -32,8 +33,12 @@ body {
 }
 
 @keyframes flashAnim {
-  0% { background-color: #d4edda; }
-  100% { background-color: #ffffff; }
+  0% {
+    background-color: #d4edda;
+  }
+  100% {
+    background-color: #ffffff;
+  }
 }
 
 .title {
@@ -78,13 +83,13 @@ body {
   background: #e8fff0;
 }
 
-/* ✅ Buttons grid */
+/* ✅ Buttons - now stacked vertically */
 .button-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  margin-top: 10px;
-  justify-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-top: 15px;
 }
 
 /* ✅ Button styles */
@@ -96,7 +101,8 @@ body {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.25s ease;
-  width: 120px;
+  width: 80%;
+  max-width: 250px;
   background-color: #cce5ff;
   color: #004085;
 }
@@ -109,4 +115,29 @@ body {
   background-color: #28a745;
   color: white;
   transform: scale(1.03);
+}
+
+/* ✅ Responsive tweaks for phones */
+@media (max-width: 480px) {
+  .card {
+    width: 95%;
+    padding: 25px 20px;
+  }
+
+  .title {
+    font-size: 1.4rem;
+  }
+
+  .btn {
+    width: 100%;
+    font-size: 1.1rem;
+  }
+
+  .counter label {
+    font-size: 1rem;
+  }
+
+  .counter-input {
+    font-size: 1.1rem;
+  }
 }
